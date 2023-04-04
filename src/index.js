@@ -2,7 +2,7 @@ const express = require("express");
 const http = require("http");
 const { Configuration, OpenAIApi } = require("openai");
 const app = express();
-const port = 443;
+const port = 5001;
 const configuration = new Configuration({
   apiKey: process.env.API_URL
 });
