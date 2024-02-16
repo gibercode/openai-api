@@ -2,34 +2,32 @@ const express = require("express");
 const { Configuration, OpenAIApi } = require("openai");
 const app = express();
 const port = 5001;
-require('dotenv').config();
+require("dotenv").config();
 
 const configuration = new Configuration({
-  organization: 'org-RRstoS5NJNSxt2tl2muw27h4',
-  apiKey: process.env.API_URL
+  organization: "org-RRstoS5NJNSxt2tl2muw27h4",
+  apiKey: process.env.API_URL,
 });
 
-app.use(express.json())
+app.use(express.json());
 const openai = new OpenAIApi(configuration);
 
 app.post("/", async (req, res) => {
-  const { text } = req.body;
+  const { prompt } = req.body;
   try {
     const response = await openai.createCompletion({
-      model:"text-davinci-003",
-      prompt:text,
-      temperature:1,
-      max_tokens:64,
-      top_p:1.0,
-      frequency_penalty:0.0,
-      presence_penalty:0.0
+      model: "text-davinci-003",
+      prompt,
+      temperature: 0.5,
+      max_tokens: 64,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
     });
 
     res.send({ response: response.data.choices[0].text });
-    return {}
   } catch (err) {
-		console.log('error');
-    res.status(500).send('Something broke!')
+    res.status(500).send(err);
   }
 });
 
