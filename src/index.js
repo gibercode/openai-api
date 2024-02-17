@@ -6,9 +6,7 @@ require("dotenv").config();
 
 const configuration = new Configuration({
   organization: "org-RRstoS5NJNSxt2tl2muw27h4",
-  apiKey:
-    process.env.API_URL ||
-    "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",
+  apiKey: process.env.API_URL,
 });
 
 app.use(express.json());
@@ -17,7 +15,7 @@ const openai = new OpenAIApi(configuration);
 app.post("/", async (req, res) => {
   const { prompt } = req.body;
   try {
-    const response = await openai.chat.completions.create({
+    const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       max_tokens: 7,
       temperature: 0,
