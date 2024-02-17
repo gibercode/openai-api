@@ -6,9 +6,7 @@ require("dotenv").config();
 
 const configuration = new Configuration({
   organization: "org-RRstoS5NJNSxt2tl2muw27h4",
-  apiKey:
-    process.env.API_URL ||
-    "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",
+  apiKey: process.env.API_URL,
 });
 
 app.use(express.json());
