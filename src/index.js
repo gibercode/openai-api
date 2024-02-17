@@ -26,6 +26,8 @@ app.post("/", async (req, res) => {
     // });
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
+      max_tokens: 7,
+      temperature: 0,
       messages: [
         {
           role: "system",
@@ -36,9 +38,11 @@ app.post("/", async (req, res) => {
       ],
     });
 
+    if (!response) return res.send({ key: "error" });
     res.send({ response });
   } catch (err) {
-    res.status(500).send(err);
+    res.send({ prompt });
+    // res.status(500).send(err);
   }
 });
 
