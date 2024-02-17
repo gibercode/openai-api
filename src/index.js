@@ -30,18 +30,18 @@ app.post("/", async (req, res) => {
       temperature: 0,
       messages: [
         {
-          role: "system",
+          role: "assistant",
           content:
             "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name",
         },
-        { role: "user", content: prompt },
+        { role: "user", content: "recommend me something cool and old" },
       ],
     });
 
     if (!response) return res.send({ key: "error" });
     res.send({ response });
   } catch (err) {
-    res.send({ prompt });
+    res.status(500).send({ err, prompt });
     // res.status(500).send(err);
   }
 });
