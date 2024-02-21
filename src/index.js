@@ -28,9 +28,9 @@ app.post("/", async (req, res) => {
         {
           role: "system",
           content:
-            "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name",
+            "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name, return at least 5 recommendations",
         },
-        { role: "user", content: "recommend me something cool and old" },
+        { role: "user", content: prompt },
       ],
       model: "gpt-3.5-turbo",
     });
@@ -38,7 +38,8 @@ app.post("/", async (req, res) => {
     res.send({ response });
 
     if (!response) return res.send({ key: "error" });
-    res.send({ response });
+
+    res.send(response["choices"][0]["message"]["content"]);
   } catch (err) {
     res.status(500).send({ err, prompt });
   }
