@@ -26,7 +26,7 @@ app.post("/", async (req, res) => {
         {
           role: "system",
           content:
-            "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name (object format), return a random number of element if is not specified in the prompt",
+            "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name, return a random number of element between 5 and 50 if is not specified in the prompt",
         },
         { role: "user", content: prompt },
       ],
