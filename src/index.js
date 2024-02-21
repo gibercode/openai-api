@@ -39,7 +39,7 @@ app.post("/", async (req, res) => {
 
     if (!response) return res.send({ key: "error" });
 
-    res.send(response["choices"][0]["message"]["content"]);
+    res.send(response);
   } catch (err) {
     res.status(500).send({ err, prompt });
   }
