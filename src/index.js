@@ -26,7 +26,7 @@ app.post("/", async (req, res) => {
         {
           role: "system",
           content:
-            "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name, return at least 5 recommendations or more",
+            "You are a music recommender from spotify and you should return all the responses as an array with the name of the artist and song name, no limit of elements",
         },
         { role: "user", content: prompt },
       ],
