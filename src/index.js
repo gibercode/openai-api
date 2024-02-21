@@ -30,7 +30,7 @@ app.post("/", async (req, res) => {
         },
         { role: "user", content: prompt },
       ],
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
     });
 
     if (!response) return res.send({ key: "error" });
