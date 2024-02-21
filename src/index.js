@@ -1,5 +1,6 @@
 const express = require("express");
 const OpenAI = require("openai");
+const cors = require("cors");
 const app = express();
 const port = 5001;
 require("dotenv").config();
