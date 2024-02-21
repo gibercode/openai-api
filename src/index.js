@@ -35,10 +35,7 @@ app.post("/", async (req, res) => {
       model: "gpt-3.5-turbo",
     });
 
-    res.send({ response });
-
     if (!response) return res.send({ key: "error" });
-
     res.send(response);
   } catch (err) {
     res.status(500).send({ err, prompt });
