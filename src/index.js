@@ -7,9 +7,7 @@ require("dotenv").config();
 
 const corsOpts = {
   origin: "*",
-
   methods: ["GET", "POST"],
-
   allowedHeaders: ["Content-Type"],
 };
 
@@ -36,7 +34,7 @@ app.post("/", async (req, res) => {
     });
 
     if (!response) return res.send({ key: "error" });
-    res.send(response);
+    res.send({ data: response.choices[0].message.content });
   } catch (err) {
     res.status(500).send({ err, prompt });
   }
