@@ -4,4 +4,4 @@ services:
   app:
     build: .
     ports:
-      - 5002:5002
+      - 5001:5001
